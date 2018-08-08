@@ -1,4 +1,10 @@
-import {LOGOUT_CURRENT_USER,RECEIVE_CURRENT_USER} from '../action/session_action';
+// import { LOGOUT_CURRENT_USER, RECEIVE_CURRENT_USER } from '../action/session_action';
+
+import {
+  RECEIVE_CURRENT_USER,
+  LOGOUT_CURRENT_USER,
+} from '../actions/session_actions';
+
 import merge from 'lodash/merge';
 
 const _defaultState = Object.freeze({

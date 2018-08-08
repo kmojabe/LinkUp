@@ -1,5 +1,5 @@
-import {RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER} from '../action/session_action';
-import merge from 'lodash-merge';
+import { RECEIVE_SESSION_ERRORS , RECEIVE_CURRENT_USER} from '../actions/session_actions';
+import merge from 'lodash/merge';
 
 const SessionErrorsReducer = (state=[],action) => {
   switch (action.type) {

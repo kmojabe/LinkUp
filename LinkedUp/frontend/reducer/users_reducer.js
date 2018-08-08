@@ -1,5 +1,5 @@
-import {RECEIVE_CURRENT_USER} from '../action/session_action'; //later need to add a remove user functionality
-import merge from 'lodash-merge';
+import {RECEIVE_CURRENT_USER} from '../actions/session_actions'; //later need to add a remove user functionality
+import merge from 'lodash/merge';
 
 const UsersReducer = (oldState={},action) => {
   switch (action.type) {
