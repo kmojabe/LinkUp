@@ -13,6 +13,7 @@ const Greeting = (props) => {
     <nav className="logged_out">
       <Link to="/signup">Sign Up</Link>
       <Link to="/login">Log In</Link>
+
     </nav>
   );
 
