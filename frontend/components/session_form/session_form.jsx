@@ -7,6 +7,9 @@ class SessionForm extends React.Component{
     this.state = {username: "", password: "",email:"",location:""};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  componentWillUnmount(){
+    this.props.resetErrors();
+  }
   handleSubmit(e){
     e.preventDefault();
     this.props.action(this.state);
@@ -17,7 +20,6 @@ class SessionForm extends React.Component{
     };
   }
   render(props){
-    console.log(this.props.errors);
     const location = (
       <div className="chunk">
       <label>Location</label>
@@ -59,9 +61,24 @@ class SessionForm extends React.Component{
       <input type="submit" value="Continue"/>
     );
 
+    const renderErrors = (
+      <div className="error-bounds">
+        <div className="error-box">
+          <ul>
+            {this.props.errors.map((error, i) => (
+              <li key={`error-${i}`}>
+                {error}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+
     return (
       <div className={this.props.formType === "Sign up" ? "outside-signup" : "outside-login"}>
         {this.props.formType === "Log in" ? doc_bound : null}
+        {this.props.errors.length > 0 ? renderErrors : null}
       <div className={this.props.formType === "Sign up" ? "signup-form" : "login-form"}>
         <form onSubmit={this.handleSubmit}>
           <div className="head-label">

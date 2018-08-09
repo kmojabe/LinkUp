@@ -2,6 +2,31 @@
   background-color: #fafafa;
 }
 
+.error-bounds {
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 32px 32px 16px;
+  padding-top: 0px;
+  .error-box{
+    background-color: #FBE1E3!important;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,.12);
+    padding: 16px;
+    margin: 16px;
+    margin-top: 0px;
+    ul {
+      padding-left: 0px;
+    }
+    li {
+      list-style-type: none;
+      color: #c00!important;
+      font-size: 34px;
+      line-height: 1.25;
+      font-weight: 650;
+    }
+  }
+}
+
 .login-form {
   max-width: 460px;
   padding: 32px;
