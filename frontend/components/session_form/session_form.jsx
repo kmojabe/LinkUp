@@ -17,6 +17,7 @@ class SessionForm extends React.Component{
     };
   }
   render(props){
+    console.log(this.props.errors);
     const location = (
       <div className="chunk">
       <label>Location</label>
