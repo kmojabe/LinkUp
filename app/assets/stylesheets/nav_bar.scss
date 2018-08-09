@@ -1,0 +1,17 @@
+header {
+  display: flex;
+  padding: 20px 30px;
+  border: 1px solid #e4e9ed;
+  justify-content: space-between;
+  h1 {
+
+    align-items: flex-start;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    a {
+      margin-left: 10px;
+    }
+  }
+}
