@@ -1,0 +1,54 @@
+
+
+.signup-form{
+  max-width: 460px;
+  padding: 24px 16px 8px;
+  margin: 0 auto;
+  form{
+    h2 {
+      margin: 0 auto;
+      font-size: 28px;
+      margin-bottom: 16px;
+      line-height: 1.25;
+      text-align: center;
+    }
+    input{
+      width: 100%;
+      padding: 8px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 3px;
+      background-color: #fafafa;
+      margin-bottom: 4px;
+    }
+    .chunk {
+      margin-bottom: 16px;
+    }
+    input{
+      box-sizing:border-box;
+    }
+    label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .content-input{
+      .submit-form {
+        margin-top: 12px;
+        input{
+          background-color: #FF3333;
+          color: white;
+          cursor:pointer;
+        }
+      }
+    }
+  }
+  .existing_user{
+    border-top: 1px solid rgba(0,0,0,.12);
+    padding-top: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+}

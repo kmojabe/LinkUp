@@ -1,8 +1,20 @@
-<% if logged_in? %>
-  <script id="bootstrap-current-user" type="text/javascript">
-  	window.currentUser = <%= render(
-      "api/users/user.json.jbuilder",
-  		user: current_user).html_safe %>
-  </script>
-<% end %>
-<main id="root"></main>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <title>Link Up</title>
+  </head>
+  <body>
+    <% if logged_in? %>
+      <script id="bootstrap-current-user" type="text/javascript">
+      	window.currentUser = <%= render(
+          "api/users/user.json.jbuilder",
+      		user: current_user).html_safe %>
+      </script>
+    <% end %>
+    <main id="root"></main>
+  </body>
+</html>

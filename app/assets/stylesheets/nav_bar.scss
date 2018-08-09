@@ -1,17 +1,32 @@
 header {
   display: flex;
-  padding: 20px 30px;
+  height: 45px;
+  padding: 16px;;
   border: 1px solid #e4e9ed;
   justify-content: space-between;
+  background-color: white;
   h1 {
-
-    align-items: flex-start;
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    color: red;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-weight: 50;
   }
   nav {
     display: flex;
     align-items: center;
     a {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
       margin-left: 10px;
+      text-decoration: none;
+      color: #979fa4;
+    }
+    .nav-login {
+      margin-right: 10px;
     }
   }
 }

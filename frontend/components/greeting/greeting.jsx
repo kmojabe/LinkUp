@@ -11,8 +11,12 @@ const Greeting = (props) => {
 
   const logged_out = () => (
     <nav className="logged_out">
-      <Link to="/signup">Sign Up</Link>
-      <Link to="/login">Log In</Link>
+      <div className="nav-login">
+        <Link to="/login">Log In</Link>
+      </div>
+      <div className="nav-signup">
+        <Link to="/signup">Sign Up</Link>
+      </div>
 
     </nav>
   );
