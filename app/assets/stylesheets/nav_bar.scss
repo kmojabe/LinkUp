@@ -38,8 +38,7 @@ header {
   }
 }
 .header-dropdown{
-  // display: flex;
-  display: none;
+  display: flex;
   box-shadow: rgba(0,0,0,0.54) 0 3px 8px 0;
   position: absolute;
   border: 1px solid rgba(0,0,0,0.12);
@@ -49,6 +48,7 @@ header {
   right: 16px;
   width: 460px;
   top: 60px;
+  z-index: 1;
   ul {
     display: flex;
     flex-direction: column;
@@ -84,10 +84,13 @@ header {
   }
 }
 
-.dropdown:active {
-  .header-dropdown{
-    display: flex;
-  }
+.rest-page{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .profile-dropdown{
