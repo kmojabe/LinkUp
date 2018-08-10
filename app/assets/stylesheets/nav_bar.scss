@@ -1,3 +1,7 @@
+ul {
+  list-style-type: none;
+}
+
 header {
   display: flex;
   height: 45px;
@@ -5,6 +9,9 @@ header {
   border: 1px solid #e4e9ed;
   justify-content: space-between;
   background-color: white;
+  a {
+    text-decoration: none;
+  }
   h1 {
     font-family: 'Pacifico', cursive;
     font-size: 36px;
@@ -28,5 +35,63 @@ header {
     .nav-login {
       margin-right: 10px;
     }
+  }
+}
+.header-dropdown{
+  // display: flex;
+  display: none;
+  box-shadow: rgba(0,0,0,0.54) 0 3px 8px 0;
+  position: absolute;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 3px;
+  background-color: white;
+  overflow: hidden;
+  right: 16px;
+  width: 460px;
+  top: 60px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 5px 0px;
+  }
+  li {
+    padding: 0px 20px;
+    cursor:pointer;
+    p {
+      padding: 12px 0px;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      font-size: 16px;
+      white-space: nowrap;
+      margin: 0;
+    }
+  }
+  li:hover {
+    background-color: #F64060;
+    color: white;
+  }
+
+  .group-list {
+    width: 60%;
+  }
+  .profile-list{
+    width: 40%;
+    color: rgba(0,0,0,0.54);
+    li{
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+.dropdown:active {
+  .header-dropdown{
+    display: flex;
+  }
+}
+
+.profile-dropdown{
+  i {
+    font-size: 26px;
   }
 }
