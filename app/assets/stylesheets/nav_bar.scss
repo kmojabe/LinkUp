@@ -94,7 +94,16 @@ header {
 }
 
 .profile-dropdown{
+  cursor: pointer;
   i {
     font-size: 26px;
   }
+  margin-right: 5px;
+}
+
+.logged_in a {
+  font-size: 15px;
+  display: inline-block;
+  margin-left: 25px;
+  cursor: pointer;
 }

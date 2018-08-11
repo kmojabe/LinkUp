@@ -28,7 +28,9 @@ class Greeting extends React.Component {
 
     const logged_in = () => (
       <nav className="logged_in">
-        <h3>Hello {this.props.currentUser.username}</h3>
+        <a className="explore">Explore</a>
+        <a>Messages</a>
+        <a>Notifications</a>
         <div className="dropdown">
           <a className="profile-dropdown"
             onClick={() => this.setState({toggle: !this.state.toggle})}>
