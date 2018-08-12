@@ -6,6 +6,15 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :memberships,
+    class_name: 'GroupMember',
+    foreign_key: :member_id,
+    primary_key: :id
+
+  has_many :groups,
+    through: :memberships,
+    source: :group
+
   def self.find_by_credentials(email,password)
     user = User.find_by(email: email)
     if user && user.is_password?(password)

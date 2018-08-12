@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180811003438) do
+ActiveRecord::Schema.define(version: 20180812013452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,8 @@ ActiveRecord::Schema.define(version: 20180811003438) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "bio"
+    t.text "bio", null: false
+    t.string "img_url"
     t.index ["group_name"], name: "index_groups_on_group_name", unique: true
   end
 
