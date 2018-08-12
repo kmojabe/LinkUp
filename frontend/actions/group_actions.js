@@ -15,9 +15,13 @@ export const receiveGroupErrors = (errors) => ({
   errors
 });
 
+export const clearGroupErrors = () => ({
+  type: CLEAR_GROUP_ERRORS,
+});
+
 export const createGroup = (group) => dispatch => {
   return GroupUtil.createGroup(group).then(
-    payload => dispatch(createGroup(payload)),
+    payload => dispatch(receiveGroup(payload)),
     err => dispatch(receiveGroupErrors(err.responseJSON))
   );
 };
@@ -27,4 +31,8 @@ export const fetchGroup = (id) => dispatch => {
     payload => dispatch(receiveGroup(payload)),
     err => dispatch(receiveGroupErrors(err.responseJSON))
   );
+};
+
+export const resetGroupErrors = () => dispatch => {
+  dispatch(clearGroupErrors());
 };
