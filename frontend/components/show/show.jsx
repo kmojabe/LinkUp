@@ -14,7 +14,6 @@ class Show extends React.Component{
     if (!this.props.object){
       this.props.object = this.props.fetch(this.props.objectId);
     }
-
   }
 
   componentWillUnmount(){
@@ -28,12 +27,25 @@ class Show extends React.Component{
 
     const date = this.props.object.created_at.split("T")[0];
     let name = "";
+    let keys = [];
+    let followers = {};
     if (this.props.typeObject == "group"){
       name = this.props.object.group_name;
+      keys = Object.keys(this.props.object.members);
+      followers = this.props.object.members;
+    } else if (this.props.typeObject == "user") {
+      name = this.props.object.username;
     }
 
+    const bio = (
+      <div className={`showme-info ${this.props.typeObject}-showme`}>
+        {this.props.typeObject == "group" ? <h4>What we're about</h4> : <h4>Bio</h4>}
+        <p>{this.props.object.bio}</p>
+      </div>
+    );
+
     const information = (
-      <div className="show-information">
+      <div className={`show-information ${this.props.typeObject}-info`}>
         <div className="show-name">
           <h3>{name}</h3>
         </div>
@@ -47,21 +59,19 @@ class Show extends React.Component{
             <p className="created-at">{date}</p>
           </div>
         </div>
-      </div>
-    );
-
-
-    const bio = (
-      <div className="showme-info">
-        <h4>What we're about</h4>
-        <p>{this.props.object.bio}</p>
+        {this.props.typeObject == "user" ? bio : null}
       </div>
     );
 
     const image = (
-      <div className="show-image">
+      <div className={`show-image ${this.props.typeObject}-img`}>
         {this.props.object.img_url == null ? <i class="fas fa-user"></i> : <img src={this.props.object.img_url}/>}
       </div>
+    );
+
+    console.log();
+    const object_follows = (
+      <div className="follows"></div>
     );
 
     return (
@@ -71,7 +81,7 @@ class Show extends React.Component{
             {information}
             {image}
           </div>
-          {bio}
+          {this.props.typeObject == "group" ? bio : null}
         </div>
       </div>
     );

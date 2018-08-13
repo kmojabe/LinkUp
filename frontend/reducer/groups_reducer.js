@@ -4,7 +4,9 @@ import merge from 'lodash/merge';
 const GroupsReducer = (oldState={},action) => {
   switch (action.type) {
     case RECEIVE_GROUP:
-      return merge({}, oldState, { [action.group.id]: action.group });
+      console.log(action);
+      const group = merge(action.group,{members: action.members});
+      return merge({}, oldState, { [action.group.id]: group });
     default:
       return oldState;
   }
