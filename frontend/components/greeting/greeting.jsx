@@ -28,6 +28,9 @@ class Greeting extends React.Component {
 
     const logged_in = () => (
       <nav className="logged_in">
+        <div className="create-group-form">
+          <Link to="/createGroup">Start a new group</Link>
+        </div>
         <a className="explore">Explore</a>
         <a>Messages</a>
         <a>Notifications</a>

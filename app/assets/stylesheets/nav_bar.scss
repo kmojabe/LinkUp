@@ -5,12 +5,13 @@ ul {
 header {
   display: flex;
   height: 45px;
-  padding: 16px;;
+  padding: 16px;
   border: 1px solid #e4e9ed;
   justify-content: space-between;
   background-color: white;
   a {
     text-decoration: none;
+    margin: 0;
   }
   h1 {
     font-family: 'Pacifico', cursive;
@@ -28,7 +29,7 @@ header {
       font-family: 'Roboto', sans-serif;
       font-weight: 400;
       font-size: 15px;
-      margin-left: 10px;
+      margin-right: 10px;
       text-decoration: none;
       color: #979fa4;
     }
@@ -102,8 +103,19 @@ header {
 }
 
 .logged_in a {
-  font-size: 15px;
+  font-size: 14.5px;
   display: inline-block;
-  margin-left: 25px;
+  margin-left: 16px;
+  line-height: 1.4;
+  color: rgba(0,0,0,0.54);
   cursor: pointer;
+}
+
+.create-group-form {
+  border-right: 1px solid rgba(0,0,0,0.18);
+  a {
+    font-weight: 700;
+    color: #F64060 !important;
+    margin-right: 16px;
+  }
 }

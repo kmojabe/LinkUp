@@ -1,0 +1,115 @@
+.group {
+  .group-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 240px;
+    img {
+      flex-shrink: 0;
+      min-width: 100%;
+      min-height: 100%;
+    }
+    .image-text{
+      position: absolute;
+      align-items: center;
+      top: 120px;
+      color: white;
+      padding: 10px;
+      letter-spacing: 1px;
+      text-shadow: #000 0px 0px 1px, #000 0px 0px 1px;
+      h5{
+        font-size: 34px;
+        line-height: 1.25;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 32px;
+      }
+      p {
+        text-align: center;
+        font-size: 20px;
+        margin:0;
+        margin-top: 16px;
+      }
+    }
+  }
+  .group-fillin{
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 840px;
+    padding: 24px 40px 8px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    font-size: 12px;
+    display: flex;
+    margin-top: 50px;
+    .info {
+      display: block;
+      width: 100%;
+    }
+    h5 {
+      text-align: left;
+      margin: 0;
+      padding: 0;
+
+      margin-bottom: 16px;
+      font-size: 28px;
+    }
+    input, textarea {
+      background-color: #fafafa;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,.12);
+      box-shadow: none;
+      box-sizing: border-box;
+      margin: 0 0 4px;
+      max-width: 100%;
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 32px;
+      font-size: 16px;
+    }
+    textarea{
+      min-height: 85.6px;
+      height: 200px;
+    }
+    i {
+      font-size: 50px;
+      padding: 24px 16px 8px;
+    }
+    .fa-globe-americas{
+      color: green;
+    }
+    .fa-file-signature{
+      color: lightblue;
+    }
+    .fa-users{
+      color: red;
+      font-size: 50px;
+    }
+    .fa-award{
+      color: orange;
+      padding-right: 35px;
+    }
+    ul {
+      list-style-type: circle;
+      padding: 0px 20px;
+      li {
+        color: rgba(0,0,0,.87);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.45;
+      }
+    }
+    .submit-button{
+      input{
+        background: #d01031;
+        color: white;
+        width: 140px;
+        height: 40px;
+        margin: 16px 0px;
+        margin-bottom: 400px;
+      }
+    }
+  }
+}
