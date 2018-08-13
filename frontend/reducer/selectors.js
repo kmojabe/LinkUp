@@ -2,6 +2,9 @@ export const selectGroup = ({ groups }, groupId) => {
   return groups[groupId];
 };
 
+export const selectUser = ({ users }, userId) => {
+  return users[userId];
+};
 // export const selectReviewsForBench = ({ groups, reviews }, bench) => {
 //   return bench.reviewIds.map(reviewId => reviews[reviewId]);
 // };
