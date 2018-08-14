@@ -1,0 +1,25 @@
+.list-groups {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1050px;
+  margin: 40px auto;
+ .img-bounds{
+   width: 300px;
+   height: 180px;
+   position: relative;
+   overflow: hidden;
+   margin: 0px 8px;
+   margin-bottom: 16px;
+ }
+ img {
+   max-width: 100%;
+ }
+ p{
+   position: absolute;
+   position: absolute;
+   bottom: 8px;
+   left: 16px;
+   color: white;
+ }
+
+}

@@ -21,6 +21,12 @@ class Api::GroupsController < ApplicationController
     end
   end
 
+  def index
+    @groups = Group.all
+    # later put search functionality in here
+    render "api/groups/index"
+  end
+
   private
   def group_params
     params.require(:group).permit(:location, :group_name, :bio)

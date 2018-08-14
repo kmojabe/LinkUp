@@ -11,9 +11,7 @@ class Show extends React.Component{
   }
 
   componentDidMount(){
-    if (!this.props.object){
-      this.props.object = this.props.fetch(this.props.objectId);
-    }
+    this.props.object = this.props.fetch(this.props.objectId);
   }
 
   componentWillUnmount(){
