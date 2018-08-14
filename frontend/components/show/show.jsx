@@ -31,7 +31,9 @@ class Show extends React.Component{
     let followers = {};
     if (this.props.typeObject == "group"){
       name = this.props.object.group_name;
-      keys = Object.keys(this.props.object.members);
+      if (this.props.object.members){
+        keys = Object.keys(this.props.object.members);
+      }
       followers = this.props.object.members;
     } else if (this.props.typeObject == "user") {
       name = this.props.object.username;
@@ -69,9 +71,27 @@ class Show extends React.Component{
       </div>
     );
 
-    console.log();
+    const member_list = (
+      <ul className="list-followers">
+        {keys.map(key => {
+          return (
+            <li>
+              <Link to={`/users/${key}`}>
+                <div className="img-bounds">
+                  <img src={followers[key].img_url}/>
+                </div>
+                <p>{followers[key].username}</p>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    );
     const object_follows = (
-      <div className="follows"></div>
+      <div className="follows">
+        <h4>{this.props.typeObject == "user" ? "Groups I follow" : "Members"}</h4>
+        {keys.length > 0 ? member_list : <p>This Group has no members</p>}
+      </div>
     );
 
     return (
@@ -82,6 +102,7 @@ class Show extends React.Component{
             {image}
           </div>
           {this.props.typeObject == "group" ? bio : null}
+          {this.props.typeObject == "group" ? object_follows : null}
         </div>
       </div>
     );

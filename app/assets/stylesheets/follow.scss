@@ -1,0 +1,48 @@
+.follows {
+  margin-top: 23px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  h4 {
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .list-followers{
+    display: flex;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    flex-wrap: wrap;
+    li {
+      justify-content: space-around;
+      margin: 10px;
+    }
+    a{
+      width: 442px;
+      display: flex;
+      padding: 10px 20px;
+      justify-content: space-between;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 8px;
+      text-decoration: none !important;
+      color: black;
+    }
+    p{
+      margin: 30px;
+    }
+    a:hover{
+      background-color: #fafafa;
+      box-shadow: 3px 3px #888888;
+    }
+    .img-bounds{
+      width: 72px;
+      height: 72px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+    img{
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+  }
+}
