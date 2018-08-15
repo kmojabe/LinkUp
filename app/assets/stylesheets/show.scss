@@ -78,4 +78,16 @@
     align-items: center;
     border-top: 1px solid rgba(0,0,0,.12);
   }
+  button{
+    background: #f13a59;
+     color: white;
+     width: 120px;
+     height: 40px;
+  }
+  button:hover{
+    background: #e81035;
+    -webkit-transition: all .4s cubic-bezier(.165,.84,.44,1);
+    transition: all .4s cubic-bezier(.165,.84,.44,1);
+    cursor: pointer;
+  }
 }
