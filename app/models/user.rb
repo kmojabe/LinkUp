@@ -15,13 +15,13 @@ class User < ApplicationRecord
     through: :memberships,
     source: :group
 
-  has_many :rsvps,
-    class_name: "EventAttendee"
-    foreign_key: user_id,
+  has_many :event_attendees,
+    class_name: 'EventAttendee',
+    foreign_key: :user_id,
     primary_key: :id
 
   has_many :events,
-    through: :rsvps,
+    through: :event_attendees,
     source: :event
 
   def self.find_by_credentials(email,password)

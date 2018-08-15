@@ -16,14 +16,14 @@ class Show extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    let newid = newProps.match.params.groupId || newProps.match.params.userId;
+    let newid = newProps.match.params.groupId || newProps.match.params.userId || newProps.match.params.eventId;
     if (newid != this.props.objectId) {
       this.props.fetch(newid);
     }
   }
 
   componentWillUnmount(){
-    this.props.resetErrors();
+    // this.props.resetErrors();
   }
 
   handleClick(){
@@ -33,9 +33,10 @@ class Show extends React.Component{
       followers = this.props.object.members;
     } else if (this.props.typeObject == "user") {
       name = this.props.object.username;
+    } else if (this.props.typeObject == "event"){
+      name = this.props.object.event_name;
     }
     if (followers[this.props.currentUser.id]){
-      console.log("HERE");
       this.props.unfollow(this.props.objectId);
     } else {
       let groupMember = {group_id: this.props.objectId, user_id: this.props.currentUser.id};
@@ -44,11 +45,10 @@ class Show extends React.Component{
   }
 
   render(){
-    if (!this.props.object){
+    if (!this.props.object || (this.props.typeObject == "group" && !this.props.object.members)){
       return null;
     }
-
-    const date = this.props.object.created_at.split("T")[0];
+    let date = this.props.object.created_at.split("T")[0];
     let name = "";
     let keys = [];
     let followers = {};
@@ -60,11 +60,15 @@ class Show extends React.Component{
       followers = this.props.object.members;
     } else if (this.props.typeObject == "user") {
       name = this.props.object.username;
+    } else if (this.props.typeObject == "event"){
+      name = this.props.object.event_name;
+      date = this.props.object.event_date;
+
     }
 
     const bio = (
       <div className={`showme-info ${this.props.typeObject}-showme`}>
-        {this.props.typeObject == "group" ? <h4>What we're about</h4> : <h4>Bio</h4>}
+        {this.props.typeObject != "user" ? <h4>What we're about</h4> : <h4>Bio</h4>}
         <p>{this.props.object.bio}</p>
       </div>
     );
@@ -80,11 +84,12 @@ class Show extends React.Component{
             <p className="location">{this.props.object.location}</p>
           </div>
           <div className="showme-info">
-            <h4>Linkup since:</h4>
+            <h4>{this.props.typeObject == "event" ? "Event is on:":"Linkup since:"}</h4>
             <p className="created-at">{date}</p>
           </div>
         </div>
         {this.props.typeObject == "user" ? bio : null}
+
         {this.props.currentUser && this.props.typeObject == "group" ? <button onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "Unfollow" : "Follow"}</button> : null }
       </div>
     );
@@ -125,7 +130,7 @@ class Show extends React.Component{
             {information}
             {image}
           </div>
-          {this.props.typeObject == "group" ? bio : null}
+          {this.props.typeObject != "user" ? bio : null}
           {this.props.typeObject == "group" ? object_follows : null}
         </div>
       </div>

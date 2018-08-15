@@ -5,6 +5,12 @@ export const selectGroup = ({ groups }, groupId) => {
 export const selectUser = ({ users }, userId) => {
   return users[userId];
 };
+export const selectEvent = ({ events }, eventId) => {
+  return events[eventId];
+};
+export const selectEventAttendees = ({ eventAttendees }, eventId) => {
+
+};
 // export const selectReviewsForBench = ({ groups, reviews }, bench) => {
 //   return bench.reviewIds.map(reviewId => reviews[reviewId]);
 // };

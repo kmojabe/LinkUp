@@ -7,7 +7,7 @@ class Api::GroupMembersController < ApplicationController
     else
       @group = Group.find(group_member_params["group_id"])
       @user = current_user
-      render "api/group_members/show";
+      render "api/group_members/show"
     end
   end
 
@@ -18,7 +18,7 @@ class Api::GroupMembersController < ApplicationController
     else
       @group = Group.find_by(id: params[:id])
       @user = current_user
-      render "api/group_members/show";
+      render "api/group_members/show"
     end
   end
 
