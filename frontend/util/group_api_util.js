@@ -19,11 +19,3 @@ export const fetchGroups = () => {
     url: `api/groups`
   });
 };
-
-export const addGroupMember = (group_id,user_id) => {
-  return $.ajax({
-    method: 'POST',
-    url: `/api/group_members`,
-    data: {group_id, user_id}
-  });
-};

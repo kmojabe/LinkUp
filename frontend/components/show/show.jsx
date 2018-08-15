@@ -8,14 +8,39 @@ class Show extends React.Component{
     this.state = {
       name: ""
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount(){
-    this.props.object = this.props.fetch(this.props.objectId);
+    this.props.fetch(this.props.objectId);
+  }
+
+  componentWillReceiveProps(newProps){
+    let newid = newProps.match.params.groupId || newProps.match.params.userId;
+    if (newid != this.props.objectId) {
+      this.props.fetch(newid);
+    }
   }
 
   componentWillUnmount(){
     this.props.resetErrors();
+  }
+
+  handleClick(){
+
+    let followers = {};
+    if (this.props.typeObject == "group"){
+      followers = this.props.object.members;
+    } else if (this.props.typeObject == "user") {
+      name = this.props.object.username;
+    }
+    if (followers[this.props.currentUser.id]){
+      console.log("HERE");
+      this.props.unfollow(this.props.objectId);
+    } else {
+      let groupMember = {group_id: this.props.objectId, user_id: this.props.currentUser.id};
+      this.props.follow(groupMember);
+    }
   }
 
   render(){
@@ -60,6 +85,7 @@ class Show extends React.Component{
           </div>
         </div>
         {this.props.typeObject == "user" ? bio : null}
+        {this.props.currentUser && this.props.typeObject == "group" ? <button onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "Unfollow" : "Follow"}</button> : null }
       </div>
     );
 

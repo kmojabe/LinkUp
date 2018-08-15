@@ -9,7 +9,8 @@ const msp = (state, { match }) => {
   const object = selectUser(state.entities, objectId) || _nullObject;
   const errors = state.errors.session;
   const typeObject = "user";
-  return {objectId, object, errors, typeObject};
+  const currentUser = state.entities.users[state.session.id];
+  return {objectId, object, errors, typeObject, currentUser};
 };
 
 const mdp = (dispatch, ownProps) => {

@@ -4,7 +4,7 @@ import GroupIndex from '../group/group_index';
 
 class Main extends React.Component {
   componentDidMount(){
-    this.props.groups = this.props.fetchGroups();
+    this.props.fetchGroups();
   }
 
   render(){
@@ -30,6 +30,9 @@ class Main extends React.Component {
           </div>
         </div>
         {explore()}
+        <div className="header-border">
+          <h2 className="pop-link">Explore Popular Linkups</h2>
+        </div>
         {<GroupIndex groups={this.props.groups}/>}
       </main>
     );

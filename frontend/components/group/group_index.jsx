@@ -11,7 +11,7 @@ class GroupIndex extends React.Component {
             return (<li>
                   <Link to={`groups/${group.id}`}>
                     <div className="img-bounds">
-                      <img src={group.img_url}/>
+                      <img src={group.img_url ? group.img_url : "http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png"}/>
                       <p>{group.group_name}</p>
                     </div>
                   </Link>

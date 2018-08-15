@@ -1,18 +1,23 @@
 .list-groups {
   display: flex;
   flex-wrap: wrap;
-  width: 1050px;
+  max-width: 1050px;
   margin: 40px auto;
+  padding: 0;
+  margin-top: 0;
+  justify-content: center;
+  justify-content: flex-start;
  .img-bounds{
-   width: 300px;
+   width: 330px;
    height: 180px;
    position: relative;
    overflow: hidden;
-   margin: 0px 8px;
+   margin: 0px 10px;
    margin-bottom: 16px;
  }
  img {
    max-width: 100%;
+   border-radius: 2px;
  }
  p{
    position: absolute;
@@ -20,6 +25,9 @@
    bottom: 8px;
    left: 16px;
    color: white;
+   font-size: 20px;
+   letter-spacing: 1px;
+   text-shadow: #000 0px 0px 1px, #000 0px 0px 1px;
  }
 
 }
