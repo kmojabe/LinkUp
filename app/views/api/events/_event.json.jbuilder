@@ -7,3 +7,5 @@ event.users.each do |user|
     end
   end
 end
+
+json.extract! group, :group_name

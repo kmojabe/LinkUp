@@ -1,12 +1,18 @@
 import * as EventUtil from '../util/event_api_util';
 
 export const RECEIVE_EVENT = 'RECEIVE_EVENT';
+export const REPLACE_EVENT = 'REPLACE_EVENT';
 export const CLEAR_EVENT_ATTENDEE = 'CLEAR_EVENT_ATTENDEE';
 export const RECEIVE_EVENT_ATTENDEE = 'RECEIVE_EVENT_ATTENDEE';
 export const RECEIVE_EVENT_ATTENDEES = 'RECEIVE_EVENT_ATTENDEES';
 
 export const receiveEvent = (event) => ({
   type: RECEIVE_EVENT,
+  event
+});
+
+export const replaceEvent = (event) => ({
+  type: REPLACE_EVENT,
   event
 });
 
@@ -31,7 +37,7 @@ export const receiveEventAttendees = (event_attendees) => ({
 
 export const addEventAttendee = (event_attendee) => dispatch => {
   return EventUtil.addEventAttendee(event_attendee).then(
-    payload => dispatch(receiveEventAttendee(payload))
+    event => dispatch(receiveEvent(event))
   );
 };
 
@@ -43,7 +49,7 @@ export const fetchEvent = (id) => dispatch => {
 
 export const deleteEventAttendee = (event_id) => dispatch => {
   return EventUtil.deleteEventAttendee(event_id).then(
-    payload => dispatch(clearEventAttendee(payload))
+    event => dispatch(replaceEvent(event))
   );
 };
 

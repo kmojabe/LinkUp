@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { fetchGroups } from '../../actions/group_actions';
+import { fetchGroups, clearGroups } from '../../actions/group_actions';
 import { asArray } from '../../reducer/selectors';
-import Main from './main';
+import Search from './search';
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
   const groups = asArray(state.entities);
   return {currentUser, groups};
@@ -12,7 +12,8 @@ const msp = (state) => {
 const mdp = dispatch => {
   return {
     fetchGroups: (data) => dispatch(fetchGroups(data)),
+    clearGroups: () => dispatch(clearGroups())
   };
 };
 
-export default connect(msp,mdp)(Main);
+export default connect(msp,mdp)(Search);

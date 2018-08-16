@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchEvent, fetchEventAttendees, addEventAttendee, deleteEventAttendee } from '../../actions/event_actions';
+import {fetchGroup} from '../../actions/group_actions';
 import {selectEvent, selectEventAttendees} from '../../reducer/selectors';
 import Show from './show';
 
@@ -16,7 +17,7 @@ const msp = (state, { match }) => {
 const mdp = (dispatch, ownProps) => {
   return {
     fetch: id => dispatch(fetchEvent(id)),
-    fetchEventAttendees: () => dispatch(fetchEventAttendees()),
+    fetchGroup: id => dispatch(fetchGroup(id)),
     follow: event_attendee => dispatch(addEventAttendee(event_attendee)),
     unfollow: event_id => dispatch(deleteEventAttendee(event_id))
   };

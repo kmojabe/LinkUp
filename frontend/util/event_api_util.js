@@ -9,7 +9,7 @@ export const addEventAttendee = (event_attendee) => {
   return $.ajax({
     method: 'POST',
     url: `/api/event_attendees`,
-    data: {group_member}
+    data: {event_attendee}
   });
 };
 

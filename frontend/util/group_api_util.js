@@ -13,9 +13,10 @@ export const fetchGroup = (id) => {
   });
 };
 
-export const fetchGroups = () => {
+export const fetchGroups = (data) => {
   return $.ajax({
     method: 'GET',
-    url: `api/groups`
+    url: `api/groups`,
+    data
   });
 };

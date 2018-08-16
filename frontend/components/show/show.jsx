@@ -13,9 +13,7 @@ class Show extends React.Component{
 
   componentDidMount(){
     this.props.fetch(this.props.objectId);
-    if (this.props.typeObject == "event"){
-      this.props.fetchEventAttendees();
-    }
+
   }
 
   componentWillReceiveProps(newProps){
@@ -23,7 +21,7 @@ class Show extends React.Component{
     if (newid != this.props.objectId) {
       this.props.fetch(newid);
       if (this.props.typeObject == "event"){
-        this.props.fetchEventAttendees();
+        this.props.fetchGroup(this.props.object.group_id);
       }
     }
   }
@@ -54,7 +52,7 @@ class Show extends React.Component{
   }
 
   render(){
-    if (!this.props.object || (this.props.typeObject == "group" && !this.props.object.members)){
+    if (!this.props.object || (this.props.typeObject == "group" && !this.props.object.members) || (this.props.typeObject == "event" && !this.props.object.users)){
       return null;
     }
     let date = this.props.object.created_at.split("T")[0];
@@ -102,11 +100,9 @@ class Show extends React.Component{
           </div>
         </div>
         {this.props.typeObject == "user" ? bio : null}
-
         {this.props.currentUser && this.props.typeObject == "group" ? <button onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "Unfollow" : "Follow"}</button> : null }
       </div>
     );
-
     const image = (
       <div className={`show-image ${this.props.typeObject}-img`}>
         {this.props.object.img_url == null ? <i class="fas fa-user"></i> : <img src={this.props.object.img_url}/>}
@@ -131,8 +127,15 @@ class Show extends React.Component{
     );
     const object_follows = (
       <div className="follows">
-        <h4>{this.props.typeObject == "user" ? "Groups I follow" : "Members"}</h4>
+        <h4>{this.props.typeObject == "event" ? "People Attending" : "Members"}</h4>
         {keys.length > 0 ? member_list : <p>This Group has no members</p>}
+      </div>
+    );
+
+    const rsvp_event = (
+      <div>
+        {this.props.typeObject == "event" ? <Link to={`/groups/${this.props.object.group_id}`}>{this.props.object.group_name}</Link> : null}
+        {this.props.currentUser && this.props.typeObject == "event" ? <button onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "You are going" : "You are not going"}</button> : null }
       </div>
     );
 
@@ -143,6 +146,7 @@ class Show extends React.Component{
             {information}
             {image}
           </div>
+          {this.props.typeObject == "event" ? rsvp_event : null}
           {this.props.typeObject != "user" ? bio : null}
           {this.props.typeObject != "user" ? object_follows : null}
         </div>

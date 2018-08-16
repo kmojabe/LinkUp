@@ -22,7 +22,15 @@ class Api::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups=[]
+    if location
+      @groups = (Group.in_town?(location))
+    elsif description
+      @groups = (Group.filter_name(description))
+      @groups = (@groups + Group.filter_description(description)).uniq
+    elsif params[:all]
+      @groups = Group.all
+    end
     # later put search functionality in here
     render "api/groups/index"
   end
@@ -32,4 +40,15 @@ class Api::GroupsController < ApplicationController
     params.require(:group).permit(:location, :group_name, :bio)
   end
 
+  def location
+    params[:location]
+  end
+
+  def description
+    params[:description]
+  end
+
+  def name
+    params[:name]
+  end
 end

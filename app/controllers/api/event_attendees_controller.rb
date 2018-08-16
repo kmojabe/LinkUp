@@ -5,8 +5,8 @@ class Api::EventAttendeesController < ApplicationController
     @event_attendee.user_id = current_user.id;
     if logged_in? && @event_attendee.save
       @event = Event.find_by(id: params[:event_attendee][:event_id])
-      @user = current_user
-      render "api/event_attendees/show"
+      @group = Group.find_by(id: @event.group_id)
+      render "api/events/show"
     else
       render json: @event_attendee.errors.full_messages, status: 422
     end
@@ -16,8 +16,8 @@ class Api::EventAttendeesController < ApplicationController
     @event_attendee = EventAttendee.where(user_id: current_user.id, event_id: params[:id])
     if @event_attendee.destroy_all
       @event = Event.find_by(id: params[:id])
-      @user = current_user
-      render "api/event_attendees/show"
+      @group = Group.find_by(id: @event.group_id)
+      render "api/events/show"
     else
       render json: ["Error unattending event"], status: 422
     end

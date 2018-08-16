@@ -20,4 +20,16 @@ class Group < ApplicationRecord
     foreign_key: :group_id,
     primary_key: :id
 
+  def self.in_town?(town)
+    Group.all.select{ |group| group.location.downcase == town.downcase }
+  end
+
+  def self.filter_description(word)
+    Group.all.select do |group|
+      group.bio.split.map(&:downcase).include?(word.downcase)
+    end
+  end
+  def self.filter_name(name)
+    Group.all.select{ |group| group.group_name.downcase.split.include?(name.downcase) }
+  end
 end

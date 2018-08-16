@@ -4,15 +4,15 @@ import GroupIndex from '../group/group_index';
 
 class Main extends React.Component {
   componentDidMount(){
-    this.props.fetchGroups();
+    this.props.fetchGroups({all: true});
   }
 
   render(){
     const logged_in = () => (
       <div className="home">
         <div className="home-box">
-          <h2 className="mainHeader">Find a Meetup</h2>
-          <p className="mainP">1,770 Meetups near by</p>
+          <h2 className="mainHeader">Find a Linkup</h2>
+          <p className="mainP">1,770 Linkup near by</p>
         </div>
       </div>
     );
