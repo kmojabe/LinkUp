@@ -23,4 +23,12 @@ class Api::EventAttendeesController < ApplicationController
     end
   end
 
+  def index
+    @event_attendees = EventAttendee.all
+    if @event_attendees
+      render "api/event_attendees/index"
+    else
+      render json: ["There are no event attendees"], status: 422
+    end
+  end
 end

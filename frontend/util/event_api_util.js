@@ -19,3 +19,10 @@ export const deleteEventAttendee = (event_id) => {
     url: `api/event_attendees/${event_id}`,
   });
 };
+
+export const fetchEventAttendees = () => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/event_attendees`
+  });
+};

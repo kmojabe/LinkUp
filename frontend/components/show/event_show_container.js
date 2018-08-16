@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchEvent } from '../../actions/event_actions';
-import {selectEvent} from '../../reducer/selectors';
+import { fetchEvent, fetchEventAttendees, addEventAttendee, deleteEventAttendee } from '../../actions/event_actions';
+import {selectEvent, selectEventAttendees} from '../../reducer/selectors';
 import Show from './show';
 
 const msp = (state, { match }) => {
@@ -9,12 +9,16 @@ const msp = (state, { match }) => {
   const object = selectEvent(state.entities, objectId) || _nullObject;
   const typeObject = "event";
   const currentUser = state.entities.users[state.session.id];
-  return {objectId, object, typeObject, currentUser};
+  const user_ids = selectEventAttendees(state.entities,objectId);
+  return {objectId, object, typeObject, currentUser, user_ids};
 };
 
 const mdp = (dispatch, ownProps) => {
   return {
-    fetch: id => dispatch(fetchEvent(id))
+    fetch: id => dispatch(fetchEvent(id)),
+    fetchEventAttendees: () => dispatch(fetchEventAttendees()),
+    follow: event_attendee => dispatch(addEventAttendee(event_attendee)),
+    unfollow: event_id => dispatch(deleteEventAttendee(event_id))
   };
 };
 

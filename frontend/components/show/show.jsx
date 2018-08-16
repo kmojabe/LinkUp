@@ -13,12 +13,18 @@ class Show extends React.Component{
 
   componentDidMount(){
     this.props.fetch(this.props.objectId);
+    if (this.props.typeObject == "event"){
+      this.props.fetchEventAttendees();
+    }
   }
 
   componentWillReceiveProps(newProps){
     let newid = newProps.match.params.groupId || newProps.match.params.userId || newProps.match.params.eventId;
     if (newid != this.props.objectId) {
       this.props.fetch(newid);
+      if (this.props.typeObject == "event"){
+        this.props.fetchEventAttendees();
+      }
     }
   }
 
@@ -29,18 +35,21 @@ class Show extends React.Component{
   handleClick(){
 
     let followers = {};
+    let joinObject = {};
     if (this.props.typeObject == "group"){
       followers = this.props.object.members;
+      joinObject = {group_id: this.props.objectId, user_id: this.props.currentUser.id};
     } else if (this.props.typeObject == "user") {
       name = this.props.object.username;
     } else if (this.props.typeObject == "event"){
       name = this.props.object.event_name;
+      followers = this.props.object.users;
+      joinObject = {event_id: this.props.objectId, user_id: this.props.currentUser.id};
     }
     if (followers[this.props.currentUser.id]){
       this.props.unfollow(this.props.objectId);
     } else {
-      let groupMember = {group_id: this.props.objectId, user_id: this.props.currentUser.id};
-      this.props.follow(groupMember);
+      this.props.follow(joinObject);
     }
   }
 
@@ -63,7 +72,11 @@ class Show extends React.Component{
     } else if (this.props.typeObject == "event"){
       name = this.props.object.event_name;
       date = this.props.object.event_date;
-
+      followers = this.props.object.users;
+      if (this.props.object.users){
+        keys = Object.keys(this.props.object.users);
+        console.log(keys);
+      }
     }
 
     const bio = (
@@ -131,7 +144,7 @@ class Show extends React.Component{
             {image}
           </div>
           {this.props.typeObject != "user" ? bio : null}
-          {this.props.typeObject == "group" ? object_follows : null}
+          {this.props.typeObject != "user" ? object_follows : null}
         </div>
       </div>
     );
