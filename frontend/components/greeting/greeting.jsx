@@ -18,7 +18,9 @@ class Greeting extends React.Component {
             <li><p>Uber San Francisco</p></li>
           </ul>
           <ul className="profile-list">
-            <li><p>Profile</p></li>
+            {this.props.currentUser ? <li><Link to={`/users/${this.props.currentUser.id}`}>
+              <p>Profile</p>
+            </Link></li> : null}
             <li><p>Settings</p></li>
             <li onClick={this.props.logout}><p>Sign out</p></li>
           </ul>
@@ -31,7 +33,7 @@ class Greeting extends React.Component {
         <div className="create-group-form">
           <Link to="/groups/new">Start a new group</Link>
         </div>
-        <a className="explore">Explore</a>
+        <Link className="explore" to="/search">Explore</Link>
         <a>Messages</a>
         <a>Notifications</a>
         <div className="dropdown">
@@ -46,13 +48,19 @@ class Greeting extends React.Component {
 
     const logged_out = () => (
       <nav className="logged_out">
+
+        <div className="linkedin">
+          <a href="https://www.linkedin.com/in/kavianmojabe/"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <div className="github">
+          <a href="https://github.com/kmojabe/"><i class="fab fa-github-square"></i></a>
+        </div>
         <div className="nav-login">
           <Link to="/login">Log In</Link>
         </div>
         <div className="nav-signup">
           <Link to="/signup">Sign Up</Link>
         </div>
-
       </nav>
     );
     return this.props.currentUser ? logged_in() : logged_out();

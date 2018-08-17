@@ -8,6 +8,7 @@ import GroupShowContainer from './show/group_show_container';
 import UserShowContainer from './show/user_show_container';
 import EventShowContainer from './show/event_show_container';
 import SearchContainer from './search/search_container';
+import FooterContainer from './footer/footer'
 import { Route, Link, Switch } from 'react-router-dom';
 import { AuthRoute } from '../util/route_util';
 
@@ -29,6 +30,9 @@ const App = () => (
       <Route path="/events/:eventId" component={EventShowContainer} />
       <Route path="/search" component={SearchContainer} />
     </Switch>
+    <footer>
+      <FooterContainer/>
+    </footer>
   </div>
 );
 

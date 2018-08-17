@@ -25,6 +25,7 @@ header {
   nav {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     a {
       font-family: 'Roboto', sans-serif;
       font-weight: 400;
@@ -32,6 +33,13 @@ header {
       margin-right: 10px;
       text-decoration: none;
       color: #979fa4;
+      i{
+        font-size: 50px;
+        margin-right: 10px;
+      }
+    }
+    a:hover{
+      color: #00a2c7;
     }
     .nav-login {
       margin-right: 10px;
@@ -70,6 +78,9 @@ header {
   li:hover {
     background-color: #F64060;
     color: white;
+    a{
+      color: white;
+    }
   }
 
   .group-list {
@@ -79,6 +90,11 @@ header {
     width: 40%;
     color: rgba(0,0,0,0.54);
     li{
+      font-size: 16px;
+      font-weight: 600;
+    }
+    a{
+      margin:0;
       font-size: 16px;
       font-weight: 600;
     }

@@ -6,6 +6,7 @@ class SessionForm extends React.Component{
     super(props);
     this.state = {username: "", password: "",email:"",location:""};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
   componentWillUnmount(){
     this.props.resetErrors();
@@ -13,6 +14,11 @@ class SessionForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.action(this.state);
+  }
+
+  handleDemo(e){
+    e.preventDefault();
+    this.props.action({email: "kmojabe@purdue.edu", password: "123456"});
   }
   update(field){
     return (e) => {
@@ -42,6 +48,7 @@ class SessionForm extends React.Component{
       <div className="existing_user">
         Already a member? <Link to='/login'>Log in.</Link>
       </div>
+
     );
     const not_registered = (
       <div className="not_registered">
@@ -55,7 +62,10 @@ class SessionForm extends React.Component{
       <div className="docBounds"></div>
     );
     const input_button = (
-      <input type="submit" value={this.props.formType}/>
+      <div className="input-btn">
+        <input type="submit" value={this.props.formType}/>
+        <button onClick={this.handleDemo}>Demo Login</button>
+      </div>
     );
     const signup_button = (
       <input type="submit" value="Continue"/>
@@ -107,10 +117,12 @@ class SessionForm extends React.Component{
             {this.props.formType === "Sign up" ? location : null}
             <div className="submit-form" >
               {this.props.formType === "Sign up" ? signup_button : input_button}
+
             </div>
           </div>
         </form>
         {this.props.formType === "Sign up" ? existing_user : null}
+
       </div>
       </div>
     );

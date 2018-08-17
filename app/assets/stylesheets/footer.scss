@@ -1,0 +1,33 @@
+.footer{
+  position: absolute;
+  bottom: 0 auto;
+  width: 100%;
+  background-color: #353e48;
+  border-bottom: 1px solid hsla(0,0%,100%,.2);
+  color: white;
+  .start-group{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    a{
+      color: white;
+      text-decoration: underline;
+    }
+  }
+  .bottom-foot{
+    text-align: center;
+  }
+}
+
+.application{
+  min-height:100%;
+  position:relative;
+}
+
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
