@@ -134,11 +134,10 @@ class Show extends React.Component{
         {keys.length > 0 ? member_list : <p>This Group has no members</p>}
       </div>
     );
-
     const rsvp_event = (
-      <div>
-        {this.props.typeObject == "event" ? <Link to={`/groups/${this.props.object.group_id}`}>{this.props.object.group_name}</Link> : null}
-        {this.props.currentUser && this.props.typeObject == "event" ? <button className="show-btn" onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "You are going" : "You are not going"}</button> : null }
+      <div className="rsvp-event">
+        {this.props.typeObject == "event" ? <div className="parent-tag"><h5>Event is hosted by:</h5><Link to={`/groups/${this.props.object.group_id}`}>{this.props.object.group_name}</Link></div> : null}
+        {this.props.currentUser && this.props.typeObject == "event" ? <div className="btn-div"><button className="show-btn" onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "You are going" : "You are not going"}</button></div> : null }
       </div>
     );
     return (

@@ -1,6 +1,7 @@
 .show-page {
   background-color: #fafafa;
   padding: 20px 0px;
+
   .show-inside {
     max-width: 1050px;
     width:100%;
@@ -67,6 +68,8 @@
     }
     p {
       margin: 0;
+      padding-left: 15px;
+      padding-right: 15px;
       font-size: 16px;
       line-height: 1.45;
       font-weight: 400;

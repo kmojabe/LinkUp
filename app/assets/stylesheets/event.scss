@@ -1,0 +1,39 @@
+.rsvp-event{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  margin-bottom: 10px;
+  padding: 15px;
+  padding-left: 0px;
+  display: table;
+  width: 100%;
+  text-align: center;
+  div {
+    vertical-align: middle;
+  }
+  .btn-div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .parent-tag{
+    text-align: left;
+    h5{
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    line-height: 1.6;
+    margin-bottom: 5px;
+    a{
+      cursor: pointer;
+      margin: 10px;
+      padding: 5px;
+      color: #00a2c7;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 400;
+    }
+  }
+  h5{
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
