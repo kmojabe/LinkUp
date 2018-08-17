@@ -103,7 +103,7 @@ class Show extends React.Component{
           </div>
         </div>
         {this.props.typeObject == "user" ? bio : null}
-        {this.props.currentUser && this.props.typeObject == "group" ? <button onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "Unfollow" : "Follow"}</button> : null }
+        {this.props.currentUser && this.props.typeObject == "group" ? <button className="show-btn" onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "Unfollow" : "Follow"}</button> : null }
       </div>
     );
     const image = (
@@ -138,7 +138,7 @@ class Show extends React.Component{
     const rsvp_event = (
       <div>
         {this.props.typeObject == "event" ? <Link to={`/groups/${this.props.object.group_id}`}>{this.props.object.group_name}</Link> : null}
-        {this.props.currentUser && this.props.typeObject == "event" ? <button onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "You are going" : "You are not going"}</button> : null }
+        {this.props.currentUser && this.props.typeObject == "event" ? <button className="show-btn" onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "You are going" : "You are not going"}</button> : null }
       </div>
     );
     return (
@@ -151,7 +151,7 @@ class Show extends React.Component{
           {this.props.typeObject == "event" ? rsvp_event : null}
           {this.props.typeObject != "user" ? bio : null}
           {this.props.typeObject != "user" ? object_follows : null}
-          {this.props.typeObject == "group" ? <EventIndex events={this.props.object.events}/> : null}
+          {this.props.typeObject == "group" &&  this.props.object.events ? <EventIndex events={this.props.object.events}/> : null}
         </div>
       </div>
     );
