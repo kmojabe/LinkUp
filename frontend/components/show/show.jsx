@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { selectUser } from '../../reducer/selectors';
+import EventIndex from '../event/event_index';
+
 
 class Show extends React.Component{
   constructor(props) {
@@ -71,6 +73,7 @@ class Show extends React.Component{
       name = this.props.object.event_name;
       date = this.props.object.event_date;
       followers = this.props.object.users;
+
       if (this.props.object.users){
         keys = Object.keys(this.props.object.users);
         console.log(keys);
@@ -138,7 +141,6 @@ class Show extends React.Component{
         {this.props.currentUser && this.props.typeObject == "event" ? <button onClick={this.handleClick}>{ followers[this.props.currentUser.id] ? "You are going" : "You are not going"}</button> : null }
       </div>
     );
-
     return (
       <div className="show-page">
         <div className="show-inside">
@@ -149,6 +151,7 @@ class Show extends React.Component{
           {this.props.typeObject == "event" ? rsvp_event : null}
           {this.props.typeObject != "user" ? bio : null}
           {this.props.typeObject != "user" ? object_follows : null}
+          {this.props.typeObject == "group" ? <EventIndex events={this.props.object.events}/> : null}
         </div>
       </div>
     );

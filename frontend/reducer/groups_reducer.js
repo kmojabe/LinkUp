@@ -14,7 +14,7 @@ const GroupsReducer = (oldState={},action) => {
       delete newState[action.group.id].members[action.member.id];
       return merge({}, newState);
     case RECEIVE_GROUP:
-      const group = merge(action.group,{members: action.members});
+      const group = merge(action.group,{members: action.members, events: action.events});
       return merge({}, oldState, { [action.group.id]: group });
     case REMOVE_GROUPS:
       return {};

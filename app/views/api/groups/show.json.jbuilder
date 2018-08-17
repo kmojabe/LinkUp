@@ -10,3 +10,11 @@ end
     end
   end
 end
+
+@group.events.each do |event|
+  json.events do
+    json.set! event.id do
+      json.extract! event, :event_name, :img_url, :event_date
+    end
+  end
+end

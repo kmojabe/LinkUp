@@ -10,10 +10,11 @@ export const removeGroups = () => ({
   type: REMOVE_GROUPS
 });
 
-export const receiveGroup = ({group, members}) => ({
+export const receiveGroup = ({group, members, events}) => ({
   type: RECEIVE_GROUP,
   group,
-  members
+  members,
+  events
 });
 
 export const receiveGroups = (groups) => ({

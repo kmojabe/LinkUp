@@ -23,9 +23,13 @@ class Api::GroupsController < ApplicationController
 
   def index
     @groups=[]
-    if location
+    if location && description && (!location.empty?) && (!description.empty?)
+      @groups = (Group.filter_name(description))
+      @groups = (@groups + Group.filter_description(description)).uniq
+      @groups = in_town?(@groups, location)
+    elsif location && (!location.empty?)
       @groups = (Group.in_town?(location))
-    elsif description
+    elsif description && (!description.empty?)
       @groups = (Group.filter_name(description))
       @groups = (@groups + Group.filter_description(description)).uniq
     elsif params[:all]
@@ -36,6 +40,9 @@ class Api::GroupsController < ApplicationController
   end
 
   private
+  def in_town?(groups, town)
+    groups.select{ |group| group.location.downcase == town.downcase }
+  end
   def group_params
     params.require(:group).permit(:location, :group_name, :bio)
   end

@@ -3,7 +3,7 @@ import { fetchGroups } from '../../actions/group_actions';
 import { asArray } from '../../reducer/selectors';
 import Main from './main';
 
-const msp = (state) => {
+const msp = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id];
   const groups = asArray(state.entities);
   return {currentUser, groups};
