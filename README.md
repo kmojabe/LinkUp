@@ -1,10 +1,9 @@
-# README
-Stumblr
-Stumblr live
+# LinkUp
+[LinkUp Live](http://link--up.herokuapp.com/#/)
 
-Stumblr is a full-stack web application modeled after Tumblr. It is built on a Ruby on Rails backend, PostgreSQL database, and React.js/Flux architecture frontend.
+LinkUp is a full-stack web application modeled and inspired by Meetup. LinkUp has a Ruby on Rails backend, PostgreSQL db, and a React.js/Flux frontend.
 
-Features & Implementation
+## Features & Implementation
 Post Creation and Display
 Users can create six different types of posts via media-specific forms. The various types of posts render differently based on post type, with all overlapping logic shared within the render method of their component.
 
