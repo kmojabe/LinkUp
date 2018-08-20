@@ -4,12 +4,10 @@
 LinkUp is a full-stack web application modeled and inspired by Meetup. LinkUp has a Ruby on Rails backend, PostgreSQL db, and a React.js/Flux frontend.
 
 ## Features & Implementation
-Post Creation and Display
-Users can create six different types of posts via media-specific forms. The various types of posts render differently based on post type, with all overlapping logic shared within the render method of their component.
+### User/Group/Event Table Design:
+Linkup is unique in that users can create/join groups or create/attend events. Users, groups, and events were modeled and designed almost identically due to the time constraint nature of this project. A large focus of this project was to create clean and reusuable code and I wanted the majority of my work to reflect this. The User, Group, and Event tables have almost identical backend structure and utilize the same show page, CSS, and HTML. Once creating the groundwork for the project, Linkup suddenly bloomed and became a functional website due to smart and efficient design choices.
 
-image of posts generator
 
-Posts are retrieved within the Rails PostController using database queries based on the component that is rendering:
 
 SearchFeed: posts that match a given tag entered in the search input
 Blog: posts whose author matches the blog's author
