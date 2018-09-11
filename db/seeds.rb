@@ -5,30 +5,34 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require_relative 'linkup_seeds'
+require_relative 'people_faces'
+csv_text = LINKUP_SEEDS
+
 group_names = ["SF Film enthusiasts",]
 people = []
-people_faces = ["https://static1.squarespace.com/static/53743a14e4b02080802971db/53868e8ae4b09e20aac5dcbc/54519565e4b05f91a2e9edc6/1414632808532/katrina-1.jpg?format=500w","https://static1.squarespace.com/static/53743a14e4b02080802971db/53868e8ae4b09e20aac5dcbc/540e5fbfe4b0bda632e4749f/1410228160838/WEB-4.jpg?format=500w","https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/aa40d930254455.561adc2511277.jpg","https://designyoutrust.com/wp-content/uploads/2017/08/1-50.jpg","https://cdn.skim.gs/image/upload/v1456341554/msi/brad-pitt-recognising-faces_ijuvwv.jpg","https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg","https://www.designboom.com/wp-content/uploads/2014/08/ino-zeljak-stitches-two-different-people-portraits-designboom-02.jpg","http://www3.pictures.zimbio.com/gi/Rob+Lemkin+2010+Sundance+Film+Festival+Enemies+0Qmuo-p4AH5l.jpg","https://www.joancanto.com/wp-content/uploads/2017/04/H10B0527.jpg", "https://petapixel.com/assets/uploads/2015/09/IMG_3255.jpg","http://www4.pictures.gi.zimbio.com/Thomas+Cavanagh+35th+Annual+People+Choice+8OROVpcyM1nl.jpg","http://www1.pictures.zimbio.com/gi/Ashton+Kutcher+People+Choice+Awards+2010+Portraits+P4fN_G24jXil.jpg"]
-
+people_faces = PEOPLE_FACES
 locations = ["San Francisco, CA", "Los Angeles, CA", "New York, NY", "Dallas, TX", "West Lafayette, IN", "Chicago, IL"];
-40.times do |i|
+150.times do |i|
   people.push(User.create({username: Faker::Name.name, location: locations.sample, email: Faker::Internet.email, password: "123456", img_url: people_faces.sample, bio: Faker::Lorem.paragraphs(rand(2..8)).join(' ')}))
 end
 groups = []
-group_img = ["https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_1280.jpg","https://cdn.pixabay.com/photo/2014/07/08/10/47/team-386673_1280.jpg","https://cdn.pixabay.com/photo/2014/09/20/05/17/thailand-453393_1280.jpg","https://cdn.pixabay.com/photo/2015/03/26/10/07/restaurant-690975_1280.jpg","https://cdn.pixabay.com/photo/2016/11/23/14/51/stone-circles-1853340_1280.jpg"]
-10.times do |i|
-  groups.push(Group.create({group_name: Faker::Book.title,location: locations.sample, moderator_id: people.sample.id, bio: Faker::Lorem.paragraphs(rand(2..8)).join(' '), img_url:  "https://picsum.photos/1000/800/?image="+rand(1050).to_s}))
+
+csv_text.slice(0,400).each do |row|
+  groups.push(Group.create({group_name: row[:event_title],location: locations.sample, moderator_id: people.sample.id, bio: Faker::Lorem.paragraphs(rand(6..10)).join(' '), img_url:  row[:event_image]}))
 end
 
-35.times do |i|
+400.times do |i|
   GroupMember.create({group_id: groups.sample.id, member_id: people.sample.id})
 end
 
 events = []
 
-20.times do |i|
-  events.push(Event.create({group_id: groups.sample.id, bio: Faker::Lorem.paragraphs(rand(2..8)).join(' '), location: locations.sample, event_name: Faker::Nation.nationality, event_date: Faker::Date.between(Date.today, 15.days.from_now), img_url: "https://picsum.photos/1000/800/?image="+rand(1050).to_s }))
+csv_text[401..620].each do |event|
+  events_group = groups.sample
+  events.push(Event.create({group_id: events_group.id, bio: Faker::Lorem.paragraphs(rand(6..10)).join(' '), location: events_group.location, event_name: event[:event_title], event_date: Faker::Date.between(Date.today, 15.days.from_now), img_url: event[:event_image] }))
 end
 
-40.times do |i|
+400.times do |i|
   EventAttendee.create({event_id: events.sample.id, user_id: people.sample.id})
 end
