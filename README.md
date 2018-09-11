@@ -8,10 +8,15 @@ This project was built in a two week framework and design choices were made base
 ### User/Group/Event Table Design:
 Linkup is unique in that users can create/join groups or create/attend events. Because of time constraints Users, groups, and events were modeled and designed almost identically. A large focus of this project was to create clean and reusuable code and I wanted the majority of my work to reflect this. The User, Group, and Event tables have almost identical backend structure and utilize the same show page, CSS, and React components. Once creating the groundwork for the project, Linkup quickly bloomed into a functional website due to smart and efficient design choices.
 
+
+![alt text](https://github.com/kmojabe/LinkUp/blob/master/app/assets/images/ShowPage.jpeg)
+
+
 ### Group Search Functionality
 A major functionality of Meetup is its group search functionality. I tried to mirror this functionality by requesting groups based on certain filters I pass in the form of an AJAX request to Rais. The react state maintains certain search filters based on what the user specifies and this is passed similar to a hash to the backend where RAILS uniquely sorts the groups based on text input from the user.
 
 Cool snippets of the Search functionality is the filter component of the frontend's state.
+
 Unique sorting algorithms to make accurate searches based on group bio. 
 
 ## Future Improvements
