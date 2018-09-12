@@ -16,18 +16,18 @@
    margin-bottom: 16px;
  }
  img {
-   max-width: 100%;
+   width: 100%;
    border-radius: 2px;
  }
  p{
-   position: absolute;
+   padding-right: 10px;
    position: absolute;
    bottom: 8px;
    left: 16px;
    color: white;
    font-size: 20px;
    letter-spacing: 1px;
-   text-shadow: #000 0px 0px 1px, #000 0px 0px 1px;
+   text-shadow: #000 0px 0px 1px, #000 0px 0px 1px, #000 0px 0px 1px;
  }
 
 }

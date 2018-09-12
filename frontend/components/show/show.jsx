@@ -131,6 +131,7 @@ class Show extends React.Component{
     const object_follows = (
       <div className="follows">
         <h4>{this.props.typeObject == "event" ? "People Attending" : "Members"}</h4>
+        {console.log("HERHER")}
         {keys.length > 0 ? member_list : <p>This Group has no members</p>}
       </div>
     );
