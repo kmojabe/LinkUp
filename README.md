@@ -15,7 +15,11 @@ Linkup is unique in that users can create/join groups or create/attend events. B
 ### Group Search Functionality
 A major functionality of Meetup is its group search functionality. I tried to mirror this functionality by requesting groups based on certain filters I pass in the form of an AJAX request to Rais. The react state maintains certain search filters based on what the user specifies and this is passed similar to a hash to the backend where RAILS uniquely sorts the groups based on text input from the user.
 
+![alt text](https://github.com/kmojabe/LinkUp/blob/master/app/assets/images/search.png)
+![alt text](https://github.com/kmojabe/LinkUp/blob/master/app/assets/images/search2.png)
+
 Cool snippets of the Search functionality is the filter component of the frontend's state.
+![alt text](https://github.com/kmojabe/LinkUp/blob/master/app/assets/images/snippet.png)
 
 Unique sorting algorithms to make accurate searches based on group bio. 
 
