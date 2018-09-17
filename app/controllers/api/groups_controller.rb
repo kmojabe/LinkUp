@@ -35,7 +35,6 @@ class Api::GroupsController < ApplicationController
     elsif params[:all]
       @groups = Group.all
     end
-    # later put search functionality in here
     render "api/groups/index"
   end
 
