@@ -2,7 +2,7 @@
 [LinkUp Live](http://link--up.herokuapp.com/#/)
 
 LinkUp is a full-stack web application modeled and inspired by Meetup. LinkUp has a Ruby on Rails backend, PostgreSQL db, and a React.js/Flux frontend.
-This project was built in a two week framework and design choices were made based on this constraint.
+This project was built in a two weeks and design choices were made based on this constraint.
 
 ## Features & Implementation
 ### User/Group/Event Table Design:
